@@ -1,16 +1,30 @@
 
 import { useState } from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 
 function App() {
-  
-  const [qab, jonat] = useState(0)
+
+  const [qab, jonat] = useState(true)
+
+  const meva = ['behi', 'olma', 'uzum', 'sabzi', 'kivi']
+
+  let set = setTimeout(() => {
+    jonat(false)
+  }, 5000);
+
+
   return (
     <div className="App">
-      <Header set={jonat} count={qab} />
-      <Footer set={jonat} count={qab}/>
+
+      <ul>
+        {
+          qab ? <li>Loading...</li> :
+            meva.map((e) => {
+              return <li>{e}</li>
+            })
+        }
+      </ul>
+
     </div>
   );
 }
